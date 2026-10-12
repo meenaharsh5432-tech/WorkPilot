@@ -249,15 +249,6 @@ __pycache__/
 
 Review `benchmark_report.json` before committing it. It may include prompts, tool outputs, and error details.
 
-## Submission checklist
-
-- [ ] Push runnable source code to a GitHub repository.
-- [ ] Include a tested `requirements.txt` and a sanitized `.env.example`.
-- [ ] Verify setup commands on a clean environment.
-- [ ] Attach architecture/design notes and an evaluation report.
-- [ ] Record a short demo of successful execution, an approval request, and injected-failure recovery.
-- [ ] Document assumptions, limitations, technologies, and next steps.
-- [ ] Confirm the submission deadline and link from the original hiring communication.
 
 ## Project status
 
