@@ -1,0 +1,7 @@
+INVOICE
+Company: cymric Corporation
+Invoice Number: Cym-001
+Invoice Date: 2026-09-15
+Due Date: 2026-10-15
+Amount: 12500.00
+Currency: INR

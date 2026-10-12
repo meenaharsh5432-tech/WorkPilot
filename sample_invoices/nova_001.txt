@@ -1,0 +1,7 @@
+INVOICE
+Company: Nova Technologies
+Invoice Number: NOV-001
+Invoice Date: 2026-10-10
+Due Date: 2026-11-10
+Amount: 22000.00
+Currency: INR

@@ -1,0 +1,7 @@
+INVOICE
+Company: Goli Pvt Ltd 
+Invoice Number: Gol-001
+Invoice Date: 2026-08-01
+Due Date: 2026-09-01
+Amount: 5000.00
+Currency: INR

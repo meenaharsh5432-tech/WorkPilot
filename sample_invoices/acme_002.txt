@@ -1,0 +1,7 @@
+INVOICE
+Company: Acme Corporation
+Invoice Number: ACM-002
+Invoice Date: 2026-10-05
+Due Date: 2026-11-05
+Amount: 18750.00
+Currency: INR

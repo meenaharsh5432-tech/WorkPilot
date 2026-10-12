@@ -1,0 +1,162 @@
+{
+    "total_scenarios": 6,
+    "passed": 6,
+    "failed": 0,
+    "pass_rate": 100.0,
+    "results": [
+        {
+            "scenario": "Normal invoice processing",
+            "passed": true,
+            "expected_status": "completed",
+            "actual_status": "completed",
+            "invoice_count": 1,
+            "tool_calls": 4,
+            "tools": [
+                "search_invoices",
+                "extract_invoice_fields",
+                "save_invoice",
+                "get_invoice"
+            ],
+            "duration_seconds": 5.79,
+            "error": null,
+            "agent_verified": true,
+            "approval_count": 0,
+            "approval_statuses": [],
+            "payment_statuses": [
+                "not_approved"
+            ],
+            "status_matches": true,
+            "outcome_valid": true,
+            "recovery_verified": null,
+            "read_attempts": null
+        },
+        {
+            "scenario": "Case-insensitive company request",
+            "passed": true,
+            "expected_status": "completed",
+            "actual_status": "completed",
+            "invoice_count": 1,
+            "tool_calls": 4,
+            "tools": [
+                "search_invoices",
+                "extract_invoice_fields",
+                "save_invoice",
+                "get_invoice"
+            ],
+            "duration_seconds": 8.3,
+            "error": null,
+            "agent_verified": true,
+            "approval_count": 0,
+            "approval_statuses": [],
+            "payment_statuses": [
+                "not_approved"
+            ],
+            "status_matches": true,
+            "outcome_valid": true,
+            "recovery_verified": null,
+            "read_attempts": null
+        },
+        {
+            "scenario": "Duplicate invoice protection",
+            "passed": true,
+            "expected_status": "completed",
+            "actual_status": "completed",
+            "invoice_count": 1,
+            "tool_calls": 4,
+            "tools": [
+                "search_invoices",
+                "extract_invoice_fields",
+                "save_invoice",
+                "get_invoice"
+            ],
+            "duration_seconds": 29.28,
+            "error": null,
+            "agent_verified": true,
+            "approval_count": 0,
+            "approval_statuses": [],
+            "payment_statuses": [
+                "not_approved"
+            ],
+            "status_matches": true,
+            "outcome_valid": true,
+            "recovery_verified": null,
+            "read_attempts": null
+        },
+        {
+            "scenario": "Unknown company",
+            "passed": true,
+            "expected_status": "needs_input",
+            "actual_status": "needs_input",
+            "invoice_count": 0,
+            "tool_calls": 1,
+            "tools": [
+                "search_invoices"
+            ],
+            "duration_seconds": 7.81,
+            "error": null,
+            "agent_verified": false,
+            "approval_count": 0,
+            "approval_statuses": [],
+            "payment_statuses": [],
+            "status_matches": true,
+            "outcome_valid": true,
+            "recovery_verified": null,
+            "read_attempts": null
+        },
+        {
+            "scenario": "Human approval gate",
+            "passed": true,
+            "expected_status": "awaiting_approval",
+            "actual_status": "awaiting_approval",
+            "invoice_count": 1,
+            "tool_calls": 5,
+            "tools": [
+                "search_invoices",
+                "extract_invoice_fields",
+                "save_invoice",
+                "get_invoice",
+                "request_invoice_approval"
+            ],
+            "duration_seconds": 46.1,
+            "error": null,
+            "agent_verified": true,
+            "approval_count": 1,
+            "approval_statuses": [
+                "pending"
+            ],
+            "payment_statuses": [
+                "not_approved"
+            ],
+            "status_matches": true,
+            "outcome_valid": true,
+            "recovery_verified": null,
+            "read_attempts": null
+        },
+        {
+            "scenario": "Transient database failure recovery",
+            "passed": true,
+            "expected_status": "completed",
+            "actual_status": "completed",
+            "invoice_count": 1,
+            "tool_calls": 4,
+            "tools": [
+                "search_invoices",
+                "extract_invoice_fields",
+                "save_invoice",
+                "get_invoice"
+            ],
+            "duration_seconds": 23.91,
+            "error": null,
+            "agent_verified": true,
+            "approval_count": 0,
+            "approval_statuses": [],
+            "payment_statuses": [
+                "not_approved"
+            ],
+            "status_matches": true,
+            "outcome_valid": true,
+            "recovery_verified": true,
+            "read_attempts": 2
+        }
+    ]
+}
