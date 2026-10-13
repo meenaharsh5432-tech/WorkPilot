@@ -17,7 +17,7 @@
                 "save_invoice",
                 "get_invoice"
             ],
-            "duration_seconds": 5.79,
+            "duration_seconds": 5.55,
             "error": null,
             "agent_verified": true,
             "approval_count": 0,
@@ -43,7 +43,7 @@
                 "save_invoice",
                 "get_invoice"
             ],
-            "duration_seconds": 8.3,
+            "duration_seconds": 5.51,
             "error": null,
             "agent_verified": true,
             "approval_count": 0,
@@ -69,7 +69,7 @@
                 "save_invoice",
                 "get_invoice"
             ],
-            "duration_seconds": 29.28,
+            "duration_seconds": 11.32,
             "error": null,
             "agent_verified": true,
             "approval_count": 0,
@@ -88,11 +88,12 @@
             "expected_status": "needs_input",
             "actual_status": "needs_input",
             "invoice_count": 0,
-            "tool_calls": 1,
+            "tool_calls": 2,
             "tools": [
-                "search_invoices"
+                "search_invoices",
+                "find_similar_companies"
             ],
-            "duration_seconds": 7.81,
+            "duration_seconds": 11.73,
             "error": null,
             "agent_verified": false,
             "approval_count": 0,
@@ -117,7 +118,7 @@
                 "get_invoice",
                 "request_invoice_approval"
             ],
-            "duration_seconds": 46.1,
+            "duration_seconds": 35.58,
             "error": null,
             "agent_verified": true,
             "approval_count": 1,
@@ -145,7 +146,7 @@
                 "save_invoice",
                 "get_invoice"
             ],
-            "duration_seconds": 23.91,
+            "duration_seconds": 21.66,
             "error": null,
             "agent_verified": true,
             "approval_count": 0,

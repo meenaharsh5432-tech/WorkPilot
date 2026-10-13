@@ -12,6 +12,7 @@ from sqlalchemy import select
 from app.agent.executor import execute_tool
 from app.database import SessionLocal
 from app.models import Invoice, Task
+import re
 
 load_dotenv()
 
@@ -28,6 +29,14 @@ def run_agent(task_id: int):
         task = db.get(Task, task_id)
         if task is None:
             raise ValueError("Task not found")
+        request_text = task.user_request.casefold()
+
+        approval_requested = bool(
+            re.search(
+                r"\b(approv(?:e|al)|authoriz(?:e|ation))\b",
+                request_text
+            )
+        )
         if task.status != "pending":
             raise ValueError(f"Task cannot run from status '{task.status}'")
 
@@ -72,6 +81,16 @@ def run_agent(task_id: int):
                 return json.dumps({
                     "success": False,
                     "error": "Tool execution limit reached",
+                })
+
+            if name == "request_invoice_approval" and not approval_requested:
+                return json.dumps({
+                    "success": False,
+                    "tool": name,
+                    "error": (
+                        "Approval request blocked: "
+                        "the user did not request payment approval."
+                    )
                 })
 
             step_number += 1
@@ -136,17 +155,21 @@ def run_agent(task_id: int):
             max_retries=2,
         )
 
+        agent_tools=[
+            search_invoices,
+    extract_invoice_fields,
+    save_invoice,
+    get_invoice,
+    find_similar_companies,
+    get_overdue_invoice_report,
+        ]
+
+        if approval_requested:
+            agent_tools.append(request_invoice_approval)
+
         agent = create_agent(
             model=model,
-            tools=[
-                search_invoices,
-                find_similar_companies,
-                extract_invoice_fields,
-                save_invoice,
-                get_invoice,
-                request_invoice_approval,
-                get_overdue_invoice_report,
-            ],
+            tools=agent_tools,
             system_prompt="""
 You are WorkPilot, an autonomous company task worker. Perform the user's
 objective with approved tools. Observe each tool result before proceeding.
@@ -175,6 +198,15 @@ OVERDUE REPORTING:
 - State the as-of date, total overdue count and amounts by company/currency.
 - A past-due invoice is not necessarily unpaid; payment settlement is not tracked.
 - An empty report can be valid and should be reported as zero overdue invoices.
+
+APPROVAL RULES:
+
+- Only request human payment approval when the user
+  explicitly asks for approval or authorization.
+- Invoice processing does not imply payment approval.
+- Saving and verifying invoices must not automatically
+  create approval requests.
+- Never approve or pay invoices yourself.
 """,
         )
 
